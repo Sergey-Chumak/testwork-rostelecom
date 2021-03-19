@@ -1,0 +1,34 @@
+.TableUsers {
+    color:white;
+    font-size: 1.3vw;
+}
+
+.TableUsers tr:nth-child(2n+1){
+    background: #474747;
+}
+
+.TableUsers tr:nth-child(2n){
+    background: #3e3e3e;
+}
+
+.TableUsers thead{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.TableUsers thead td:hover {
+    color: grey;
+    cursor: pointer;
+}
+
+.TableUsers thead td {
+    transition: color .22s;
+}
+
+.TableUsers tr {
+    height: 6vh;
+}
+
+.active {
+    color: gray;
+}
