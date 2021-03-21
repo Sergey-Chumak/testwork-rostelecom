@@ -1,8 +1,8 @@
 import classes from './Json.module.css'
+import dataJson from '../../data/Json.json'
 
 export function Json () {
-    let dataJson = require('../../data/Json.json')
-
+    
     function createMarkup() {
         return {__html: dataJson[0].text};
     }
