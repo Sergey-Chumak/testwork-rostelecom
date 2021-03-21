@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/testwork-rostelecom/static/css/main.83470f12.chunk.css",
-    "main.js": "/testwork-rostelecom/static/js/main.94370653.chunk.js",
-    "main.js.map": "/testwork-rostelecom/static/js/main.94370653.chunk.js.map",
+    "main.js": "/testwork-rostelecom/static/js/main.bdab53d4.chunk.js",
+    "main.js.map": "/testwork-rostelecom/static/js/main.bdab53d4.chunk.js.map",
     "runtime-main.js": "/testwork-rostelecom/static/js/runtime-main.ab313559.js",
     "runtime-main.js.map": "/testwork-rostelecom/static/js/runtime-main.ab313559.js.map",
     "static/css/2.ffda3d49.chunk.css": "/testwork-rostelecom/static/css/2.ffda3d49.chunk.css",
-    "static/js/2.a16aae0d.chunk.js": "/testwork-rostelecom/static/js/2.a16aae0d.chunk.js",
-    "static/js/2.a16aae0d.chunk.js.map": "/testwork-rostelecom/static/js/2.a16aae0d.chunk.js.map",
+    "static/js/2.22d6b64b.chunk.js": "/testwork-rostelecom/static/js/2.22d6b64b.chunk.js",
+    "static/js/2.22d6b64b.chunk.js.map": "/testwork-rostelecom/static/js/2.22d6b64b.chunk.js.map",
     "static/js/3.e77245b2.chunk.js": "/testwork-rostelecom/static/js/3.e77245b2.chunk.js",
     "static/js/3.e77245b2.chunk.js.map": "/testwork-rostelecom/static/js/3.e77245b2.chunk.js.map",
     "index.html": "/testwork-rostelecom/index.html",
     "static/css/2.ffda3d49.chunk.css.map": "/testwork-rostelecom/static/css/2.ffda3d49.chunk.css.map",
     "static/css/main.83470f12.chunk.css.map": "/testwork-rostelecom/static/css/main.83470f12.chunk.css.map",
-    "static/js/2.a16aae0d.chunk.js.LICENSE.txt": "/testwork-rostelecom/static/js/2.a16aae0d.chunk.js.LICENSE.txt"
+    "static/js/2.22d6b64b.chunk.js.LICENSE.txt": "/testwork-rostelecom/static/js/2.22d6b64b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ab313559.js",
     "static/css/2.ffda3d49.chunk.css",
-    "static/js/2.a16aae0d.chunk.js",
+    "static/js/2.22d6b64b.chunk.js",
     "static/css/main.83470f12.chunk.css",
-    "static/js/main.94370653.chunk.js"
+    "static/js/main.bdab53d4.chunk.js"
   ]
 }
