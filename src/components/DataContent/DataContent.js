@@ -4,12 +4,14 @@ import {useState, useEffect} from 'react'
 import TableUsers from "../TableUsers/TableUsers"
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import _ from 'lodash';
 
 function DataContent() {
     const [users, setUsers] = useState([])
     const [filtredUsers, setFiltredUsers] = useState([])
     const [inputValue, setInputValue] = useState('')
     const [activeThead, setActiveThead] = useState('id')
+    const [stateSort, setStateSort] = useState(null)
 
     useEffect(() => {
         async function getUsers() {
@@ -36,7 +38,7 @@ function DataContent() {
     useEffect(() => {
         if (inputValue) {
             setFiltredUsers(users.filter((user) => {
-                return user.name.toLowerCase().startsWith(inputValue.toLowerCase().trim())
+                return user.name.toLowerCase().includes(inputValue.toLowerCase().trim())
             }))
             setActiveThead('id')
             return
@@ -50,57 +52,49 @@ function DataContent() {
     }
 
     function sortUsersHandler(field) {
-        const copyUsers = [...filtredUsers]
-        if (field === 'id') {
-            setActiveThead(field)
-            const sortData = copyUsers.sort(
-                (a, b) => {
-                    return a[field] > b[field] ? 1 : -1
-                }
-            )
-            setFiltredUsers(sortData)
-        } else if (field === 'name' || field === 'email') {
-            setActiveThead(field)
-            const sortData = copyUsers.sort(
-                (a, b) => {
-                    let nameA = a[field].toLowerCase(), nameB = b[field].toLowerCase()
-                    if (nameA < nameB)
-                        return -1
-                    if (nameA > nameB)
-                        return 1
-                    return 0
-                }
-            )
-            setFiltredUsers(sortData)
-        } else if (field === 'company') {
-            setActiveThead(field)
-            const sortData = copyUsers.sort(
-                (a, b) => {
-                    let nameA = a[field].name.toLowerCase(), nameB = b[field].name.toLowerCase()
-                    if (nameA < nameB)
-                        return -1
-                    if (nameA > nameB)
-                        return 1
-                    return 0
-                }
-            )
-            setFiltredUsers(sortData)
-        } else {
-            setActiveThead(field)
-            const sortData = copyUsers.sort(
 
-                (a, b) => {
-                    let nameA = a[field].city.toLowerCase(), nameB = b[field].city.toLowerCase()
-                    if (nameA < nameB)
-                        return -1
-                    if (nameA > nameB)
-                        return 1
-                    return 0
+            if (field === 'id' || field === 'name' || field === 'email')
+            {
+                if (activeThead !== field) {
+                    const copyUsers = _.sortBy(filtredUsers, [(item) => item[field]])
+                    setFiltredUsers(copyUsers)
+                    setActiveThead(field)
+                    setStateSort(field)
+                } else {
+                   const copyUsers = _.sortBy(filtredUsers, [(item) => item[field]])
+                   setFiltredUsers(copyUsers.reverse())
+                   setActiveThead(null)
+                    setStateSort(field)
                 }
-            )
-            setFiltredUsers(sortData)
-        }
+            } else if (field === 'company') {
+
+                if (activeThead !== field) {
+                    const copyUsers = _.sortBy(filtredUsers, [(item) => item.company.name])
+                    setFiltredUsers(copyUsers)
+                    setActiveThead(field)
+                    setStateSort(field)
+                } else {
+                    const copyUsers = _.sortBy(filtredUsers, [(item) => item.company.name])
+                    setFiltredUsers(copyUsers.reverse())
+                    setActiveThead(null)
+                    setStateSort(field)
+                }
+            } else if (field === 'address') {
+
+                if (activeThead !== field) {
+                    const copyUsers = _.sortBy(filtredUsers, [(item) => item.address.city])
+                    setFiltredUsers(copyUsers)
+                    setActiveThead(field)
+                    setStateSort({[field]: true})
+                } else {
+                    const copyUsers = _.sortBy(filtredUsers, [(item) => item.address.city])
+                    setFiltredUsers(copyUsers.reverse())
+                    setActiveThead(null)
+                    setStateSort({[field]: false})
+                }
+            }
     }
+
 
     return (
         <div className={classes.DataContent}>
@@ -118,7 +112,7 @@ function DataContent() {
             <input className={"search "} placeholder={'Search'} onChange={handleInput}/>
             {
                 filtredUsers.length > 0
-                ? <TableUsers active={activeThead} usersFilter={filtredUsers} sortUsersHandler={sortUsersHandler}/>
+                ? <TableUsers active={stateSort} usersFilter={filtredUsers} sortUsersHandler={sortUsersHandler}/>
                 : <p style={{fontSize: '3vw', color: 'white'}}>User not found</p>
             }
         </div>
